@@ -37,6 +37,7 @@ def test_diff_text_detects_change() -> None:
     assert result.schema_version == "2026-03-29"
     assert result.summary.lines_added == 1
     assert result.summary.lines_removed == 1
+    assert result.metrics["granularity"] == "line"
 
 
 def test_diff_pdf_bytes_detects_change() -> None:
@@ -50,6 +51,8 @@ def test_diff_pdf_bytes_detects_change() -> None:
     assert "Line C" in result.unified_diff
     assert result.documents["old"]["pages"] == 1
     assert result.documents["new"]["pages"] == 1
+    assert "text_coverage_ratio" in result.extraction_quality["old"]
+    assert "timing_ms" in result.metrics
 
 
 def test_diff_pdf_bytes_includes_page_aware_lines() -> None:
@@ -66,3 +69,18 @@ def test_diff_pdf_bytes_includes_page_aware_lines() -> None:
     assert first_hunk["new"]["lines"][0]["page"] == 2
     assert first_hunk["old"]["lines"][0]["line_on_page"] == 1
     assert first_hunk["new"]["lines"][0]["line_on_page"] == 1
+
+
+def test_block_granularity_works() -> None:
+    old_pdf = make_pdf_bytes(["A", "B", "C", "D"])
+    new_pdf = make_pdf_bytes(["A", "B", "C", "E"])
+
+    result = diff_pdf_bytes(old_pdf, new_pdf, granularity="block")
+
+    assert result.changed is True
+    assert result.metrics["granularity"] == "block"
+
+
+def test_move_detection_marks_hunk_move() -> None:
+    result = diff_text("alpha\nbeta\ngamma", "alpha\ngamma\nbeta")
+    assert any(h["op"] == "move" for h in result.hunks)

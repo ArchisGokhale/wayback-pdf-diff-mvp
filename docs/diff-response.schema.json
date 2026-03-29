@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PDF Diff Response",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "changed",
+    "summary",
+    "documents",
+    "unified_diff",
+    "hunks"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "changed": {
+      "type": "boolean"
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "lines_added",
+        "lines_removed",
+        "lines_changed"
+      ],
+      "properties": {
+        "lines_added": {
+          "type": "integer"
+        },
+        "lines_removed": {
+          "type": "integer"
+        },
+        "lines_changed": {
+          "type": "integer"
+        }
+      }
+    },
+    "documents": {
+      "type": "object"
+    },
+    "extraction_quality": {
+      "type": "object"
+    },
+    "metrics": {
+      "type": "object"
+    },
+    "unified_diff": {
+      "type": "string"
+    },
+    "hunks": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "changes": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  }
+}
