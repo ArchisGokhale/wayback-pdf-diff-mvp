@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-label="Swagger Preview">
+  <rect width="1200" height="700" fill="#f7fafc"/>
+  <rect x="0" y="0" width="1200" height="76" fill="#0f172a"/>
+  <text x="36" y="48" font-family="Segoe UI, Arial" font-size="28" fill="#f8fafc" font-weight="700">Wayback PDF Diff API Docs</text>
+  <rect x="40" y="110" width="1120" height="120" rx="10" fill="#ffffff" stroke="#d1d9e6"/>
+  <text x="60" y="148" font-family="Consolas, monospace" font-size="20" fill="#0f172a">POST /api/v1/diff/pdf</text>
+  <text x="60" y="182" font-family="Segoe UI, Arial" font-size="16" fill="#475569">Upload two PDFs and get structured page-aware diff output.</text>
+  <rect x="40" y="250" width="1120" height="120" rx="10" fill="#ffffff" stroke="#d1d9e6"/>
+  <text x="60" y="288" font-family="Consolas, monospace" font-size="20" fill="#0f172a">POST /api/v1/jobs/diff/pdf</text>
+  <text x="60" y="322" font-family="Segoe UI, Arial" font-size="16" fill="#475569">Queue async diff job and poll by job_id.</text>
+  <rect x="40" y="390" width="1120" height="120" rx="10" fill="#ffffff" stroke="#d1d9e6"/>
+  <text x="60" y="428" font-family="Consolas, monospace" font-size="20" fill="#0f172a">GET /api/v1/schema/diff/pdf</text>
+  <text x="60" y="462" font-family="Segoe UI, Arial" font-size="16" fill="#475569">Fetch JSON schema for integration and contract testing.</text>
+  <text x="40" y="662" font-family="Segoe UI, Arial" font-size="16" fill="#64748b">Placeholder image: replace with a real /docs screenshot.</text>
+</svg>
